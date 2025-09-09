@@ -1,0 +1,8 @@
+apache-airflow==2.6.3
+psycopg2-binary
+pandas
+numpy
+beautifulsoup4
+matplotlib
+seaborn
+scikit-learn

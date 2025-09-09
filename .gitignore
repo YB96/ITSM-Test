@@ -1,0 +1,23 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Airflow logs
+logs/
+airflow.db
+
+# DBT artifacts
+dbt/target/
+dbt/.dbt/
+
+# CSV or raw data
+data/*.csv
+
+# VSCode / IDE files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db

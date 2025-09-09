@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+  - name: itsm
+    description: "Source table containing raw ITSM tickets from ServiceNow CSV."
+    tables:
+      - name: itsm_raw_tickets
+        description: "Raw tickets imported from CSV."
+        columns:
+          - name: ticket_id
+            description: "Unique ticket identifier"
+            tests:
+              - not_null
+              - unique
+          - name: category
+            description: "Ticket category"
+            tests:
+              - not_null
+          - name: created_date
+            description: "Ticket creation timestamp"
+            tests:
+              - not_null
+          - name: resolved_date
+            description: "Ticket resolved timestamp"
+
+models:
+  - name: clean_tickets
+    description: "Cleaned and deduplicated tickets with standardized date formats."
+    columns:
+      - name: ticket_id
+        tests:
+          - not_null
+          - unique
+      - name: created_date
+        tests:
+          - not_null
+
+  - name: avg_resolution_time
+    description: "Average resolution time per Category and Priority."
+    columns:
+      - name: category
+        tests:
+          - not_null
+      - name: priority
+        tests:
+          - not_null
+      - name: avg_resolution_time_hrs
+        description: "Average resolution time in hours"
+
+  - name: closure_rate
+    description: "Ticket closure rate per Assigned Group."
+    columns:
+      - name: assigned_group
+        tests:
+          - not_null
+      - name: closure_rate_pct
+        description: "Closure rate in percent"
+
+  - name: monthly_ticket_summary
+    description: "Monthly aggregation of ticket count, avg resolution time, and closure rate."
+    columns:
+      - name: month
+        description: "Month of ticket creation"
+        tests:
+          - not_null
+      - name: total_tickets
+        description: "Number of tickets created in that month"
+      - name: avg_resolution_time
+        description: "Average resolution time for that month"
+      - name: closure_rate_pct
+        description: "Closure rate percent for that month"
