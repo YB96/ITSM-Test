@@ -14,31 +14,26 @@ The workflow includes:
 ---
 
 ## Project Structure
-
+# Project Structure
+```
 ITSM-Test/
-│
-├─ dags/ # Airflow DAG files
-│ └─ itsm_pipeline_dag.py
-│
-├─ dbt/ # DBT project
-│ ├─ models/
-│ │ ├─ clean_tickets.sql
-│ │ ├─ avg_resolution_time.sql
-│ │ ├─ closure_rate.sql
-│ │ ├─ monthly_ticket_summary.sql
-│ │ └─ schema.yml
-│ └─ dbt_project.yml
-│
-├─ data/ # Input CSV files
-│ └─ itsm_tickets.csv
-│
-├─ logs/ # Airflow logs
-├─ docker-compose.yml 
-├─ Dockerfile.airflow 
+├─ dags/                      
+│  └─ itsm_pipeline_dag.py
+├─ dbt/                      
+│  ├─ models/
+│  │  ├─ clean_tickets.sql
+│  │  ├─ avg_resolution_time.sql
+│  │  ├─ closure_rate.sql
+│  │  ├─ monthly_ticket_summary.sql
+│  │  └─ schema.yml
+│  └─ dbt_project.yml
+├─ data/                      # Input CSV files
+│  └─ itsm_tickets.csv
+├─ logs/                     
+├─ docker-compose.yml
+├─ Dockerfile.airflow
 ├─ requirements.txt
-
-
-
+```
 ---
 
 ## Prerequisites
